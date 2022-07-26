@@ -102,6 +102,7 @@ namespace prjLinqHomework
         int step = 0;
         private void button1_Click(object sender, EventArgs e)
         {
+            IsProducts = false;
             count = 0;
             dataGridView1.Columns.Clear();
             dataGridView2.Columns.Clear();
@@ -185,7 +186,7 @@ namespace prjLinqHomework
                 var q = GetOrderDetails(year);
                 dataGridView2.DataSource = q.Skip(count).Take(step).ToList();
             }
-            button13.Enabled = (count + step < totalCount) ? true : false;
+            button13.Enabled = (count + step < totalCount) ? true : false; 
         }
     }
 }
