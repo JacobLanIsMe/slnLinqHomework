@@ -110,7 +110,7 @@ namespace prjLinqHomework
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(822, 40);
             this.lblDetails.TabIndex = 102;
-            this.lblDetails.Text = "訂單明細";
+            this.lblDetails.Text = "訂單明細 / Product List / Selected student score";
             // 
             // dataGridView2
             // 
@@ -171,7 +171,7 @@ namespace prjLinqHomework
             this.lblMaster.Name = "lblMaster";
             this.lblMaster.Size = new System.Drawing.Size(593, 40);
             this.lblMaster.TabIndex = 101;
-            this.lblMaster.Text = "訂單";
+            this.lblMaster.Text = "訂單 / Total student score";
             // 
             // dataGridView1
             // 
