@@ -20,9 +20,28 @@ namespace prjLinqHomework
             ordersTableAdapter1.Fill(nwDataSet1.Orders);
             order_DetailsTableAdapter1.Fill(nwDataSet1.Order_Details);
             productsTableAdapter1.Fill(nwDataSet1.Products);
+            students_scores = new List<Student>()
+            {
+                 new Student{ Name = "aaa", Class = "CS_101", Chi = 80, Eng = 80, Math = 50, Gender = "Male" },
+                 new Student{ Name = "bbb", Class = "CS_102", Chi = 80, Eng = 80, Math = 100, Gender = "Male" },
+                 new Student{ Name = "ccc", Class = "CS_101", Chi = 60, Eng = 50, Math = 75, Gender = "Female" },
+                 new Student{ Name = "ddd", Class = "CS_102", Chi = 80, Eng = 70, Math = 85, Gender = "Female" },
+                 new Student{ Name = "eee", Class = "CS_101", Chi = 80, Eng = 80, Math = 50, Gender = "Female" },
+                 new Student{ Name = "fff", Class = "CS_102", Chi = 80, Eng = 80, Math = 80, Gender = "Female" },
+            };
+        }
+        List<Student> students_scores;
+
+        public class Student
+        {
+            public string Name { get; set; }
+            public string Class { get; set; }
+            public int Chi { get; set; }
+            public int Eng { get; internal set; }
+            public int Math { get; set; }
+            public string Gender { get; set; }
         }
 
-        
         private IEnumerable<NWDataSet.Order_DetailsRow> GetOrderDetails(int year)
         {
             
@@ -39,7 +58,11 @@ namespace prjLinqHomework
         {
 
         }
-
+        void ClearAllDataGridView()
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView2.Columns.Clear();
+        }
         
 
         private void button14_Click(object sender, EventArgs e)
@@ -82,8 +105,7 @@ namespace prjLinqHomework
         {
             IsProducts = false;
             comboBox1.Items.Clear();
-            dataGridView2.Columns.Clear();
-            dataGridView1.Columns.Clear();
+            ClearAllDataGridView();
             dataGridView1.DataSource = nwDataSet1.Orders;
             List<int> _year = new List<int>(); 
             foreach (DataRow r in nwDataSet1.Orders.Rows)
@@ -104,8 +126,7 @@ namespace prjLinqHomework
         {
             IsProducts = false;
             count = 0;
-            dataGridView1.Columns.Clear();
-            dataGridView2.Columns.Clear();
+            ClearAllDataGridView();
             if (!int.TryParse(comboBox1.Text, out int year)) return;
             step = Convert.ToInt32(textBox1.Text);
             var q1 = GetOrderDetails(year);
@@ -115,8 +136,7 @@ namespace prjLinqHomework
         }
         private void button13_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView2.Columns.Clear();
+            ClearAllDataGridView();
             count += step;
             if (IsProducts)
             {
@@ -136,8 +156,7 @@ namespace prjLinqHomework
 
         private void button12_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView2.Columns.Clear();
+            ClearAllDataGridView();
             count -= step;
             if (count < 0) count = 0;
             if (IsProducts)
@@ -160,8 +179,7 @@ namespace prjLinqHomework
             IsProducts = true;
             count = 0;
             step = Convert.ToInt32(textBox1.Text);
-            dataGridView1.Columns.Clear();
-            dataGridView2.Columns.Clear();
+            ClearAllDataGridView();
             var q = from r in nwDataSet1.Products
                     select r;
             totalCount = q.Count();
@@ -187,6 +205,61 @@ namespace prjLinqHomework
                 dataGridView2.DataSource = q.Skip(count).Take(step).ToList();
             }
             button13.Enabled = (count + step < totalCount) ? true : false; 
+        }
+
+        private void btnSearchStudentScore_Click(object sender, EventArgs e)
+        {
+            ClearAllDataGridView();
+            var q = from r in students_scores
+                    select r;
+            dataGridView1.DataSource = q.ToList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var q = from i in students_scores
+                    select i;
+            MessageBox.Show("共有 " + q.Count().ToString() + " 位學員");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var q = from i in students_scores
+                    select new { i.Name, i.Chi, i.Eng, i.Math };
+            dataGridView2.DataSource = q.Take(Top = 3).ToList();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            students_scores.Reverse();
+            var q = from i in students_scores
+                    select new { i.Name, i.Chi, i.Eng, i.Math };
+            dataGridView2.DataSource = q.Take(Top = 2).ToList();
+            students_scores.Reverse();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Where(n => n.Name == "aaa" || n.Name == "bbb" || n.Name == "ccc").Select(n=> new { n.Name, n.Chi, n.Eng, n.Math});
+            dataGridView2.DataSource = q.ToList();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Where(n => n.Name == "bbb").Select(n => new { n.Name, n.Chi, n.Eng, n.Math });
+            dataGridView2.DataSource = q.ToList();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Where(n => n.Name != "bbb").Select(n => new { n.Name, n.Chi, n.Eng, n.Math });
+            dataGridView2.DataSource = q.ToList();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Where(n => n.Math < 60).Select(n => new { n.Name, n.Math });
+            dataGridView2.DataSource = q.ToList();
         }
     }
 }
