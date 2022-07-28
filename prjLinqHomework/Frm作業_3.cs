@@ -44,32 +44,40 @@ namespace prjLinqHomework
             public int Math { get; set; }
             public string Gender { get; set; }
         }
-        string[] subject = { "Chi", "Eng", "Math" };
+        string[] _subject = { "Chi", "Eng", "Math" };
         private void button1_Click(object sender, EventArgs e)
         {
+            chart1.Series.Clear();
             chart1.DataSource = students_scores;
-            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            var q = students_scores.Select(i => i.Name).ToList();
-            
-            
+            for (int i = 0; i < _subject.Length; i++)
+            {
+                chart1.Series.Add(_subject[i]);
+                chart1.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                chart1.Series[i].XValueMember = "Name";
+                chart1.Series[i].YValueMembers = _subject[i];
+            }
+            chart1.ChartAreas[0].AxisY.Maximum = 100;
         }
         private void button36_Click(object sender, EventArgs e)
         {
+            if (comboBox2.Text == null) return;
             string subject = comboBox2.Text;
             chart1.DataSource = students_scores;
-            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            chart1.Series[0].Name = subject;
-            chart1.Series[0].XValueMember = "Name";
+            chart1.Series.Clear();
+            chart1.Series.Add(subject);
             chart1.Series[0].YValueMembers = subject;
         }
 
         private void button37_Click(object sender, EventArgs e)
         {
+            chart1.Series.Clear();
             string student = comboBox1.Text;
-            var q = (students_scores.Where(i => i.Name == student).Select(i => new { i.Chi, i.Eng, i.Math })).ToList();
+            chart1.Series.Add(student);
+            var q = (students_scores.Where(i => i.Name == student).Select(i => new { i.Chi, i.Eng, i.Math })); 
+            int[] scores = new int[3];
             chart1.DataSource = q.ToList();
-            //chart1.Series.Add(subject);
-
+            chart1.Series[0].Points.Add() 
+            //chart1.Series[0].Points = _subject;
         }
 
         
