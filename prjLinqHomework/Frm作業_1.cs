@@ -261,5 +261,27 @@ namespace prjLinqHomework
             var q = students_scores.Where(n => n.Math < 60).Select(n => new { n.Name, n.Math });
             dataGridView2.DataSource = q.ToList();
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Select(n => new
+            {
+                n.Name,
+                n.Chi,
+                n.Eng,
+                n.Math,
+                總分 = new[] { n.Chi, n.Eng, n.Math }.Sum(),
+                平均 = new[] { n.Chi, n.Eng, n.Math }.Average().ToString("0.00"),
+                最高分 = new[] { n.Chi, n.Eng, n.Math }.Max(),
+                最低分 = new[] { n.Chi, n.Eng, n.Math }.Min()
+            });
+            dataGridView2.DataSource = q.ToList();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            var q = students_scores.Where(i => i.Name == "aaa" || i.Name == "bbb" || i.Name == "ccc").Select(i => new { i.Name, i.Chi, i.Math });
+            dataGridView2.DataSource = q.ToList();
+        }
     }
 }
