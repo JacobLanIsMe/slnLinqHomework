@@ -31,7 +31,10 @@ namespace prjLinqHomework
             foreach (Student i in students_scores)
             {
                 comboBox1.Items.Add(i.Name);
+                comboBoxStudent.Items.Add(i.Name);
+                _studentName.Add(i.Name);
             }
+            comboBoxSubject.Items.AddRange(_subject);
             
         }
         List<Student> students_scores;
@@ -44,6 +47,7 @@ namespace prjLinqHomework
             public int Math { get; set; }
             public string Gender { get; set; }
         }
+        List<string> _studentName = new List<string>();
         string[] _subject = { "Chi", "Eng", "Math" };
         private void button1_Click(object sender, EventArgs e)
         {
@@ -66,6 +70,7 @@ namespace prjLinqHomework
             chart1.Series.Clear();
             chart1.Series.Add(subject);
             chart1.Series[0].YValueMembers = subject;
+            chart1.Series[0].XValueMember = "Name";
         }
 
         private void button37_Click(object sender, EventArgs e)
@@ -74,12 +79,28 @@ namespace prjLinqHomework
             string student = comboBox1.Text;
             chart1.Series.Add(student);
             var q = (students_scores.Where(i => i.Name == student).Select(i => new { i.Chi, i.Eng, i.Math })); 
-            int[] scores = new int[3];
-            chart1.DataSource = q.ToList();
-            chart1.Series[0].Points.Add() 
-            //chart1.Series[0].Points = _subject;
+            foreach (var row in q)
+            {
+                chart1.Series[0].Points.AddXY("Chi", row.Chi);
+                chart1.Series[0].Points.AddXY("Eng", row.Eng);
+                chart1.Series[0].Points.AddXY("Math", row.Math);
+            }
         }
 
         
+
+        private void comboBoxStudent_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string selectedStudent = (string)comboBoxStudent.SelectedItem;
+            comboBoxStudent.Items.Remove(selectedStudent);
+            listBoxStudent.Items.Add(selectedStudent);
+        }
+
+        private void listBoxStudent_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxStudent.SelectedItem == null) return;
+            string selectedStudent = (string)listBoxStudent.SelectedItem;
+            listBoxStudent.Items.Remove(selectedStudent);
+        }
     }
 }
