@@ -154,43 +154,149 @@ namespace prjLinqHomework
             List<string> subjects = new List<string>();
             foreach (string i in listBoxStudent.Items) students.Add(i);
             foreach (string i in listBoxSubject.Items) subjects.Add(i);
-            var q = from i in students_scores
-                    where students.ToArray().Contains(i.Name)
-                    select i;
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisY.Maximum = 100;
-            if (subjects.Count == 0 && comboBoxGroupBy.Text == "")
+            if (comboBoxGroupBy.Text == "")
             {
-                foreach (Student i in q)
+                var q = from i in students_scores
+                        where students.ToArray().Contains(i.Name)
+                        select i;
+                if (subjects.Count == 0)
                 {
-                    chart1.Series.Add(i.Name);
-                    chart1.Series[i.Name].Points.AddXY("Chi", i.Chi);
-                    chart1.Series[i.Name].Points.AddXY("Eng", i.Eng);
-                    chart1.Series[i.Name].Points.AddXY("Math", i.Math);
-                    chart1.Series[i.Name].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                    foreach (Student i in q)
+                    {
+                        chart1.Series.Add(i.Name);
+                        chart1.Series[i.Name].Points.AddXY("Chi", i.Chi);
+                        chart1.Series[i.Name].Points.AddXY("Eng", i.Eng);
+                        chart1.Series[i.Name].Points.AddXY("Math", i.Math);
+                        chart1.Series[i.Name].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                    }
                 }
-            }
-            else if (comboBoxGroupBy.Text == "")
-            {
-                if (students.Count == 0)
-                    chart1.DataSource = students_scores;
                 else
-                    chart1.DataSource = q.ToList();
-                foreach (string i in subjects)
                 {
-                    chart1.Series.Add(i);
-                    chart1.Series[i].XValueMember = "Name";
-                    chart1.Series[i].YValueMembers = i;
-                    chart1.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                    if (students.Count == 0)
+                        chart1.DataSource = students_scores;
+                    else
+                        chart1.DataSource = q.ToList();
+                    foreach (string i in subjects)
+                    {
+                        chart1.Series.Add(i);
+                        chart1.Series[i].XValueMember = "Name";
+                        chart1.Series[i].YValueMembers = i;
+                        chart1.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                    }
                 }
             }
+            else
+            {
+                if (comboBoxGroupBy.Text == "不及格人數")
+                {
+                    foreach (string subject in subjects)
+                    {
+                        var q = (from i in students_scores
+                                group i by IsPass(i, subject) into g
+                                select new { 是否及格 = g.Key, 人數 = g.Count() }).OrderBy(i => i.是否及格);
+                        chart1.ChartAreas[0].AxisY.Maximum = students_scores.Count;
+                        chart1.Series.Add(subject);
+                        chart1.Series[subject].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        foreach (var j in q)
+                        {
+                            chart1.Series[subject].Points.AddXY(j.是否及格, j.人數);
+                        }
+                    }
+                }
+                else if (comboBoxGroupBy.Text == "依成績排序")
+                {
+                    if (subjects.Count == 1)
+                    {
+                        if (subjects[0] == "Chi")
+                        {
+                            var q = students_scores.OrderBy(i => i.Chi);
+                            chart1.DataSource = q.ToList();
+                        }
+                        else if (subjects[0] == "Eng")
+                        {
+                            var q = students_scores.OrderBy(i => i.Eng);
+                            chart1.DataSource = q.ToList();
+                        }
+                        else
+                        {
+                            var q = students_scores.OrderBy(i => i.Math);
+                            chart1.DataSource = q.ToList();
+                            
+                        }
+                        chart1.Series.Add(subjects[0]);
+                        chart1.Series[subjects[0]].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        chart1.ChartAreas[0].AxisY.Maximum = 100;
+                        chart1.Series[subjects[0]].XValueMember = "Name";
+                        chart1.Series[subjects[0]].YValueMembers = subjects[0];
+                    }
+                    else
+                    {
+                        MessageBox.Show("一次僅可排序一個科目");
+                    }
+                    
+                }
+                else if (comboBoxGroupBy.Text == "依成績分群")
+                {
+                    foreach (string subject in subjects)
+                    {
+                        var q = (from i in students_scores
+                                 group i by Grade(i, subject) into g
+                                 select new { 等級 = g.Key, 人數 = g.Count()}).OrderBy(i=>i.等級);
+                        chart1.Series.Add(subject);
+                        chart1.ChartAreas[0].AxisY.Maximum = students_scores.Count;
+                        chart1.Series[subject].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        foreach (var j in q)
+                        {
+                            chart1.Series[subject].Points.AddXY(j.等級, j.人數);
+                        }
+                    }
+                }
 
-
-
-
-
-
+            }
         }
-        
+        private string IsPass(Student i, string subject)
+        {
+            if (subject == "Chi")
+            {
+                if (i.Chi >= 60) return "及格";
+                else return "不及格";
+            }
+            else if (subject == "Eng")
+            {
+                if (i.Eng >= 60) return "及格";
+                else return "不及格";
+            }
+            else
+            {
+                if (i.Math >= 60) return "及格";
+                else return "不及格";
+            }
+        }
+        private string Grade(Student i, string subject)
+        {
+            if (subject == "Chi")
+            {
+                if (i.Chi >= 90) return "優良";
+                else if (i.Chi >= 70) return "佳";
+                else if (i.Chi >= 60) return "待加強";
+                else return "當掉";
+            }
+            else if (subject == "Eng")
+            {
+                if (i.Eng >= 90) return "優良";
+                else if (i.Eng >= 70) return "佳";
+                else if (i.Eng >= 60) return "待加強";
+                else return "當掉";
+            }
+            else
+            {
+                if (i.Math >= 90) return "優良";
+                else if (i.Math >= 70) return "佳";
+                else if (i.Math >= 60) return "待加強";
+                else return "當掉";
+            }
+        }
     }
 }
