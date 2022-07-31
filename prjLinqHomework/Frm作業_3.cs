@@ -55,6 +55,7 @@ namespace prjLinqHomework
         List<Student> students_scores;
         string[] unSelectedStudentName;
         string[] unSelectedSubject;
+        string[] allSubject = { "Chi", "Eng", "Math" };
         Dictionary<string, int> studentNameIndex;
         Dictionary<string, int> subjectIndex;
         public class Student
@@ -68,31 +69,43 @@ namespace prjLinqHomework
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add("FirstChart");
             chart1.Series.Clear();
             chart1.DataSource = students_scores;
-            for (int i = 0; i < unSelectedSubject.Count(); i++)
+            for (int i = 0; i < allSubject.Count(); i++)
             {
-                chart1.Series.Add(unSelectedSubject[i]);
+                chart1.Series.Add(allSubject[i]);
                 chart1.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 chart1.Series[i].XValueMember = "Name";
-                chart1.Series[i].YValueMembers = unSelectedSubject[i];
+                chart1.Series[i].YValueMembers = allSubject[i];
             }
             chart1.ChartAreas[0].AxisY.Maximum = 100;
         }
         private void button36_Click(object sender, EventArgs e)
         {
-            if (comboBox2.Text == null) return;
+            chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add("FirstChart");
             chart1.Series.Clear();
-            string subject = comboBox2.Text;
+            if (comboBox2.Text == "") return;
+            string subject = comboBox2.Text; chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add("FirstChart");
+            chart1.Series.Clear();
             chart1.DataSource = students_scores;
-            chart1.Series.Clear();
             chart1.Series.Add(subject);
+            chart1.ChartAreas[0].AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
             chart1.Series[0].YValueMembers = subject;
             chart1.Series[0].XValueMember = "Name";
         }
         private void button37_Click(object sender, EventArgs e)
         {
+            
+            chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add("FirstChart");
             chart1.Series.Clear();
+            if (comboBox1.Text == "") return;
             string student = comboBox1.Text;
             chart1.Series.Add(student);
             var q = (students_scores.Where(i => i.Name == student).Select(i => new { i.Chi, i.Eng, i.Math })); 

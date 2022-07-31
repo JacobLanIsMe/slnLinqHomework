@@ -50,8 +50,8 @@ namespace prjLinqHomework
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.awDataSet1 = new prjLinqHomework.AWDataSet();
-            this.productPhotoTableAdapter1 = new prjLinqHomework.AWDataSetTableAdapters.ProductPhotoTableAdapter();
+            this.adventureWorkDataSet1 = new prjLinqHomework.AdventureWorkDataSet();
+            this.productPhotoTableAdapter1 = new prjLinqHomework.AdventureWorkDataSetTableAdapters.ProductPhotoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,13 +64,14 @@ namespace prjLinqHomework
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.awDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorkDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -93,17 +94,19 @@ namespace prjLinqHomework
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1059, 483);
-            this.splitContainer1.SplitterDistance = 232;
+            this.splitContainer1.Size = new System.Drawing.Size(2295, 966);
+            this.splitContainer1.SplitterDistance = 464;
+            this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 0;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label10.Location = new System.Drawing.Point(319, 127);
+            this.label10.Location = new System.Drawing.Point(691, 254);
+            this.label10.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(20, 12);
+            this.label10.Size = new System.Drawing.Size(40, 24);
             this.label10.TabIndex = 149;
             this.label10.Text = "年:";
             // 
@@ -112,18 +115,20 @@ namespace prjLinqHomework
             this.comboBox3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(372, 120);
+            this.comboBox3.Location = new System.Drawing.Point(806, 240);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(119, 26);
+            this.comboBox3.Size = new System.Drawing.Size(253, 44);
             this.comboBox3.TabIndex = 148;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label8.Location = new System.Drawing.Point(319, 167);
+            this.label8.Location = new System.Drawing.Point(691, 334);
+            this.label8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 12);
+            this.label8.Size = new System.Drawing.Size(40, 24);
             this.label8.TabIndex = 147;
             this.label8.Text = "季:";
             // 
@@ -137,25 +142,28 @@ namespace prjLinqHomework
             "第二季",
             "第三季",
             "第四季"});
-            this.comboBox2.Location = new System.Drawing.Point(372, 160);
+            this.comboBox2.Location = new System.Drawing.Point(806, 320);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(119, 26);
+            this.comboBox2.Size = new System.Drawing.Size(253, 44);
             this.comboBox2.TabIndex = 146;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(598, 82);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1296, 164);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(164, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(351, 36);
             this.dateTimePicker2.TabIndex = 145;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(56, 75);
+            this.button3.Location = new System.Drawing.Point(121, 150);
+            this.button3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(241, 37);
+            this.button3.Size = new System.Drawing.Size(522, 74);
             this.button3.TabIndex = 137;
             this.button3.Text = "     區間腳踏車 ";
             this.button3.UseVisualStyleBackColor = false;
@@ -164,9 +172,10 @@ namespace prjLinqHomework
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(558, 87);
+            this.label7.Location = new System.Drawing.Point(1209, 174);
+            this.label7.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.Size = new System.Drawing.Size(22, 24);
             this.label7.TabIndex = 144;
             this.label7.Text = "~";
             // 
@@ -174,9 +183,10 @@ namespace prjLinqHomework
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button5.Location = new System.Drawing.Point(56, 115);
+            this.button5.Location = new System.Drawing.Point(121, 230);
+            this.button5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(241, 37);
+            this.button5.Size = new System.Drawing.Size(522, 74);
             this.button5.TabIndex = 138;
             this.button5.Text = "     某年腳踏車 ";
             this.button5.UseVisualStyleBackColor = false;
@@ -184,9 +194,10 @@ namespace prjLinqHomework
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(372, 82);
+            this.dateTimePicker1.Location = new System.Drawing.Point(806, 164);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(164, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(351, 36);
             this.dateTimePicker1.TabIndex = 143;
             // 
             // button10
@@ -194,9 +205,10 @@ namespace prjLinqHomework
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button10.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(56, 155);
+            this.button10.Location = new System.Drawing.Point(121, 310);
+            this.button10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(241, 37);
+            this.button10.Size = new System.Drawing.Size(522, 74);
             this.button10.TabIndex = 139;
             this.button10.Text = "     某季腳踏車  ? 有幾筆 ?";
             this.button10.UseVisualStyleBackColor = false;
@@ -206,9 +218,10 @@ namespace prjLinqHomework
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label3.Location = new System.Drawing.Point(316, 87);
+            this.label3.Location = new System.Drawing.Point(685, 174);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 12);
+            this.label3.Size = new System.Drawing.Size(64, 24);
             this.label3.TabIndex = 142;
             this.label3.Text = "區間:";
             // 
@@ -216,9 +229,10 @@ namespace prjLinqHomework
             // 
             this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button11.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button11.Location = new System.Drawing.Point(56, 35);
+            this.button11.Location = new System.Drawing.Point(121, 70);
+            this.button11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(241, 37);
+            this.button11.Size = new System.Drawing.Size(522, 74);
             this.button11.TabIndex = 140;
             this.button11.Text = "     All 腳踏車 ";
             this.button11.UseVisualStyleBackColor = false;
@@ -228,9 +242,10 @@ namespace prjLinqHomework
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(54, 9);
+            this.label6.Location = new System.Drawing.Point(117, 18);
+            this.label6.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(165, 12);
+            this.label6.Size = new System.Drawing.Size(324, 24);
             this.label6.TabIndex = 141;
             this.label6.Text = "LINQ to AdventureWorks DataSet";
             // 
@@ -238,6 +253,7 @@ namespace prjLinqHomework
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -247,8 +263,9 @@ namespace prjLinqHomework
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer2.Size = new System.Drawing.Size(1059, 247);
-            this.splitContainer2.SplitterDistance = 470;
+            this.splitContainer2.Size = new System.Drawing.Size(2295, 494);
+            this.splitContainer2.SplitterDistance = 1018;
+            this.splitContainer2.SplitterWidth = 9;
             this.splitContainer2.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -259,21 +276,24 @@ namespace prjLinqHomework
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.097166F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.90283F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 247);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 494);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 23);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 46);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(464, 221);
+            this.dataGridView1.Size = new System.Drawing.Size(1004, 442);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseUp);
             // 
@@ -284,9 +304,10 @@ namespace prjLinqHomework
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(7, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(464, 20);
+            this.label1.Size = new System.Drawing.Size(1004, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Master";
             // 
@@ -298,19 +319,21 @@ namespace prjLinqHomework
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.097166F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.90283F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(585, 247);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1268, 494);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 46);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(579, 221);
+            this.pictureBox1.Size = new System.Drawing.Size(1254, 442);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -321,16 +344,17 @@ namespace prjLinqHomework
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(7, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(579, 20);
+            this.label2.Size = new System.Drawing.Size(1254, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "Details";
             // 
-            // awDataSet1
+            // adventureWorkDataSet1
             // 
-            this.awDataSet1.DataSetName = "AWDataSet";
-            this.awDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.adventureWorkDataSet1.DataSetName = "AdventureWorkDataSet";
+            this.adventureWorkDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // productPhotoTableAdapter1
             // 
@@ -338,10 +362,11 @@ namespace prjLinqHomework
             // 
             // Frm作業_2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 483);
+            this.ClientSize = new System.Drawing.Size(2295, 966);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "Frm作業_2";
             this.Text = "Frm作業_2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -360,7 +385,7 @@ namespace prjLinqHomework
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.awDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorkDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,7 +413,7 @@ namespace prjLinqHomework
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private AWDataSet awDataSet1;
-        private AWDataSetTableAdapters.ProductPhotoTableAdapter productPhotoTableAdapter1;
+        private AdventureWorkDataSet adventureWorkDataSet1;
+        private AdventureWorkDataSetTableAdapters.ProductPhotoTableAdapter productPhotoTableAdapter1;
     }
 }

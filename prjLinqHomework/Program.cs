@@ -16,7 +16,7 @@ namespace prjLinqHomework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm作業_3());
+            Application.Run(new MainForm());
         }
     }
 }

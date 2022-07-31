@@ -20,9 +20,9 @@ namespace prjLinqHomework {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("AWDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("AdventureWorkDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class AWDataSet : global::System.Data.DataSet {
+    public partial class AdventureWorkDataSet : global::System.Data.DataSet {
         
         private ProductPhotoDataTable tableProductPhoto;
         
@@ -30,7 +30,7 @@ namespace prjLinqHomework {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public AWDataSet() {
+        public AdventureWorkDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace prjLinqHomework {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected AWDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected AdventureWorkDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace prjLinqHomework {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            AWDataSet cln = ((AWDataSet)(base.Clone()));
+            AdventureWorkDataSet cln = ((AdventureWorkDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace prjLinqHomework {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "AWDataSet";
+            this.DataSetName = "AdventureWorkDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/AWDataSet.xsd";
+            this.Namespace = "http://tempuri.org/AdventureWorkDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableProductPhoto = new ProductPhotoDataTable();
@@ -225,7 +225,7 @@ namespace prjLinqHomework {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            AWDataSet ds = new AWDataSet();
+            AdventureWorkDataSet ds = new AdventureWorkDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -548,7 +548,7 @@ namespace prjLinqHomework {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AWDataSet ds = new AWDataSet();
+                AdventureWorkDataSet ds = new AdventureWorkDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -791,7 +791,7 @@ namespace prjLinqHomework {
         }
     }
 }
-namespace prjLinqHomework.AWDataSetTableAdapters {
+namespace prjLinqHomework.AdventureWorkDataSetTableAdapters {
     
     
     /// <summary>
@@ -965,7 +965,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::prjLinqHomework.Properties.Settings.Default.AdventureWorks2019ConnectionString;
+            this._connection.ConnectionString = global::prjLinqHomework.Properties.Settings.Default.AdventureWorksConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -983,7 +983,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AWDataSet.ProductPhotoDataTable dataTable) {
+        public virtual int Fill(AdventureWorkDataSet.ProductPhotoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -996,9 +996,9 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AWDataSet.ProductPhotoDataTable GetData() {
+        public virtual AdventureWorkDataSet.ProductPhotoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AWDataSet.ProductPhotoDataTable dataTable = new AWDataSet.ProductPhotoDataTable();
+            AdventureWorkDataSet.ProductPhotoDataTable dataTable = new AdventureWorkDataSet.ProductPhotoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1006,14 +1006,14 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AWDataSet.ProductPhotoDataTable dataTable) {
+        public virtual int Update(AdventureWorkDataSet.ProductPhotoDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AWDataSet dataSet) {
+        public virtual int Update(AdventureWorkDataSet dataSet) {
             return this.Adapter.Update(dataSet, "ProductPhoto");
         }
         
@@ -1282,7 +1282,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(AWDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(AdventureWorkDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._productPhotoTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ProductPhoto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1301,7 +1301,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(AWDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(AdventureWorkDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._productPhotoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ProductPhoto.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1319,7 +1319,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(AWDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(AdventureWorkDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._productPhotoTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ProductPhoto.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1361,7 +1361,7 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(AWDataSet dataSet) {
+        public virtual int UpdateAll(AdventureWorkDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
