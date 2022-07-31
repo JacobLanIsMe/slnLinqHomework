@@ -23,9 +23,17 @@ namespace prjLinqHomework
                  new Student{ Name = "aaa", Class = "CS_101", Chi = 65, Eng = 85, Math = 45, Gender = "Male" },
                  new Student{ Name = "bbb", Class = "CS_102", Chi = 80, Eng = 80, Math = 100, Gender = "Male" },
                  new Student{ Name = "ccc", Class = "CS_101", Chi = 60, Eng = 50, Math = 75, Gender = "Female" },
-                 new Student{ Name = "ddd", Class = "CS_102", Chi = 80, Eng = 65, Math = 85, Gender = "Female" },
+                 new Student{ Name = "ddd", Class = "CS_102", Chi = 80, Eng = 65, Math = 66, Gender = "Female" },
                  new Student{ Name = "eee", Class = "CS_101", Chi = 40, Eng = 30, Math = 50, Gender = "Female" },
                  new Student{ Name = "fff", Class = "CS_102", Chi = 100, Eng = 90, Math = 80, Gender = "Female" },
+                 new Student{ Name = "ggg", Class = "CS_102", Chi = 30, Eng = 25, Math = 58, Gender = "Female" },
+                 new Student{ Name = "hhh", Class = "CS_102", Chi = 97, Eng = 88, Math = 98, Gender = "Female" },
+                 new Student{ Name = "iii", Class = "CS_101", Chi = 46, Eng = 78, Math = 69, Gender = "Male" },
+                 new Student{ Name = "jjj", Class = "CS_102", Chi = 80, Eng = 75, Math = 77, Gender = "Female" },
+                 new Student{ Name = "kkk", Class = "CS_101", Chi = 55, Eng = 47, Math = 88, Gender = "Male" },
+                 new Student{ Name = "lll", Class = "CS_102", Chi = 90, Eng = 88, Math = 66, Gender = "Female" },
+                 new Student{ Name = "mmm", Class = "CS_102", Chi = 25, Eng = 33, Math = 18, Gender = "Male" },
+                 new Student{ Name = "nnn", Class = "CS_101", Chi = 50, Eng = 60, Math = 70, Gender = "Female" },
             };
             unSelectedStudentName = new string[students_scores.Count()];
             unSelectedSubject = new string[] { "Chi", "Eng", "Math" };
@@ -154,9 +162,14 @@ namespace prjLinqHomework
             List<string> subjects = new List<string>();
             foreach (string i in listBoxStudent.Items) students.Add(i);
             foreach (string i in listBoxSubject.Items) subjects.Add(i);
+            chart1.ChartAreas.Clear();
             chart1.Series.Clear();
+            chart1.ChartAreas.Add("FirstChart");
+            chart1.ChartAreas["FirstChart"].AxisY.TitleFont = new Font("標楷體", 14);
+            chart1.ChartAreas["FirstChart"].AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chart1.ChartAreas["FirstChart"].AxisX.LabelStyle.IsStaggered = true;
             chart1.ChartAreas[0].AxisY.Maximum = 100;
-            if (comboBoxGroupBy.Text == "")
+            if (comboBoxGroupBy.Text == "" || comboBoxGroupBy.Text == "不分群")
             {
                 var q = from i in students_scores
                         where students.ToArray().Contains(i.Name)
@@ -166,6 +179,7 @@ namespace prjLinqHomework
                     foreach (Student i in q)
                     {
                         chart1.Series.Add(i.Name);
+                        chart1.ChartAreas[0].AxisY.Title = "分數";
                         chart1.Series[i.Name].Points.AddXY("Chi", i.Chi);
                         chart1.Series[i.Name].Points.AddXY("Eng", i.Eng);
                         chart1.Series[i.Name].Points.AddXY("Math", i.Math);
@@ -181,6 +195,7 @@ namespace prjLinqHomework
                     foreach (string i in subjects)
                     {
                         chart1.Series.Add(i);
+                        chart1.ChartAreas[0].AxisY.Title = "分數";
                         chart1.Series[i].XValueMember = "Name";
                         chart1.Series[i].YValueMembers = i;
                         chart1.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
@@ -189,6 +204,17 @@ namespace prjLinqHomework
             }
             else
             {
+                comboBoxStudent.Items.Clear();
+                foreach (string s in listBoxStudent.Items)
+                {
+                    unSelectedStudentName[studentNameIndex[s]] = s;
+                }
+                foreach (string i in unSelectedStudentName)
+                {
+                    if (i == "") continue;
+                    comboBoxStudent.Items.Add(i);
+                }
+                listBoxStudent.Items.Clear();
                 if (comboBoxGroupBy.Text == "不及格人數")
                 {
                     foreach (string subject in subjects)
@@ -197,6 +223,7 @@ namespace prjLinqHomework
                                 group i by IsPass(i, subject) into g
                                 select new { 是否及格 = g.Key, 人數 = g.Count() }).OrderBy(i => i.是否及格);
                         chart1.ChartAreas[0].AxisY.Maximum = students_scores.Count;
+                        chart1.ChartAreas[0].AxisY.Title = "人數";
                         chart1.Series.Add(subject);
                         chart1.Series[subject].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                         foreach (var j in q)
@@ -223,10 +250,10 @@ namespace prjLinqHomework
                         {
                             var q = students_scores.OrderBy(i => i.Math);
                             chart1.DataSource = q.ToList();
-                            
                         }
                         chart1.Series.Add(subjects[0]);
                         chart1.Series[subjects[0]].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        chart1.ChartAreas[0].AxisY.Title = "分數";
                         chart1.ChartAreas[0].AxisY.Maximum = 100;
                         chart1.Series[subjects[0]].XValueMember = "Name";
                         chart1.Series[subjects[0]].YValueMembers = subjects[0];
@@ -243,9 +270,11 @@ namespace prjLinqHomework
                     {
                         var q = (from i in students_scores
                                  group i by Grade(i, subject) into g
-                                 select new { 等級 = g.Key, 人數 = g.Count()}).OrderBy(i=>i.等級);
+                                 select new { 等級 = g.Key, 人數 = g.Count()}).OrderByDescending(i=>i.等級);
                         chart1.Series.Add(subject);
                         chart1.ChartAreas[0].AxisY.Maximum = students_scores.Count;
+                        chart1.ChartAreas[0].AxisY.Title = "人數";
+                        chart1.ChartAreas[0].AxisX.TitleFont = new Font("標楷體", 14);
                         chart1.Series[subject].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                         foreach (var j in q)
                         {
@@ -253,7 +282,84 @@ namespace prjLinqHomework
                         }
                     }
                 }
-
+                else if (comboBoxGroupBy.Text == "依班級分群")
+                {
+                    chart1.ChartAreas["FirstChart"].AxisY.Maximum = 100;
+                    chart1.ChartAreas["FirstChart"].AxisY.Title = "平均分數";
+                    foreach (string subject in subjects)
+                    {
+                        chart1.Series.Add(subject);
+                        if (subject == "Chi")
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Class into g
+                                    select new { Class = g.Key, Avg = g.Average(i => i.Chi) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Class, j.Avg);
+                            }
+                        }
+                        else if (subject == "Eng")
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Class into g
+                                    select new { Class = g.Key, Avg = g.Average(i => i.Eng) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Class, j.Avg);
+                            }
+                        }
+                        else
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Class into g
+                                    select new { Class = g.Key, Avg = g.Average(i => i.Math) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Class, j.Avg);
+                            }
+                        }
+                    }
+                }
+                else if (comboBoxGroupBy.Text == "依性別分群")
+                {
+                    chart1.ChartAreas["FirstChart"].AxisY.Maximum = 100;
+                    chart1.ChartAreas["FirstChart"].AxisY.Title = "平均分數";
+                    foreach (string subject in subjects)
+                    {
+                        chart1.Series.Add(subject);
+                        if (subject == "Chi")
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Gender into g
+                                    select new { Gender = g.Key, Avg = g.Average(i => i.Chi) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Gender, j.Avg);
+                            }
+                        }
+                        else if (subject == "Eng")
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Gender into g
+                                    select new { Gender = g.Key, Avg = g.Average(i => i.Eng) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Gender, j.Avg);
+                            }
+                        }
+                        else
+                        {
+                            var q = from i in students_scores
+                                    group i by i.Gender into g
+                                    select new { Gender = g.Key, Avg = g.Average(i => i.Math) };
+                            foreach (var j in q)
+                            {
+                                chart1.Series[subject].Points.AddXY(j.Gender, j.Avg);
+                            }
+                        }
+                    }
+                }
             }
         }
         private string IsPass(Student i, string subject)
@@ -278,24 +384,24 @@ namespace prjLinqHomework
         {
             if (subject == "Chi")
             {
-                if (i.Chi >= 90) return "優良";
-                else if (i.Chi >= 70) return "佳";
-                else if (i.Chi >= 60) return "待加強";
-                else return "當掉";
+                if (i.Chi >= 90) return "1.優良";
+                else if (i.Chi >= 70) return "2.佳";
+                else if (i.Chi >= 60) return "3.待加強";
+                else return "4.當掉";
             }
             else if (subject == "Eng")
             {
-                if (i.Eng >= 90) return "優良";
-                else if (i.Eng >= 70) return "佳";
-                else if (i.Eng >= 60) return "待加強";
-                else return "當掉";
+                if (i.Eng >= 90) return "1.優良";
+                else if (i.Eng >= 70) return "2.佳";
+                else if (i.Eng >= 60) return "3.待加強";
+                else return "4.當掉";
             }
             else
             {
-                if (i.Math >= 90) return "優良";
-                else if (i.Math >= 70) return "佳";
-                else if (i.Math >= 60) return "待加強";
-                else return "當掉";
+                if (i.Math >= 90) return "1.優良";
+                else if (i.Math >= 70) return "2.佳";
+                else if (i.Math >= 60) return "3.待加強";
+                else return "4.當掉";
             }
         }
     }
