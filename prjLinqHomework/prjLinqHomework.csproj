@@ -63,6 +63,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdventureWorkDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>NorthWindModel.tt</DependentUpon>
     </Compile>

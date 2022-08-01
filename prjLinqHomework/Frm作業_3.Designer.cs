@@ -53,6 +53,7 @@ namespace prjLinqHomework
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +108,7 @@ namespace prjLinqHomework
             this.comboBox1.Location = new System.Drawing.Point(261, 323);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 40);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 151;
             // 
             // comboBox2
@@ -121,7 +122,7 @@ namespace prjLinqHomework
             this.comboBox2.Location = new System.Drawing.Point(261, 175);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 40);
+            this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 152;
             // 
             // button1
@@ -140,10 +141,10 @@ namespace prjLinqHomework
             // listBoxStudent
             // 
             this.listBoxStudent.FormattingEnabled = true;
-            this.listBoxStudent.ItemHeight = 37;
+            this.listBoxStudent.ItemHeight = 18;
             this.listBoxStudent.Location = new System.Drawing.Point(16, 148);
             this.listBoxStudent.Name = "listBoxStudent";
-            this.listBoxStudent.Size = new System.Drawing.Size(150, 189);
+            this.listBoxStudent.Size = new System.Drawing.Size(150, 184);
             this.listBoxStudent.TabIndex = 154;
             this.listBoxStudent.DoubleClick += new System.EventHandler(this.listBoxStudent_DoubleClick);
             // 
@@ -153,7 +154,7 @@ namespace prjLinqHomework
             this.label1.Font = new System.Drawing.Font("標楷體", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(73, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 37);
+            this.label1.Size = new System.Drawing.Size(49, 19);
             this.label1.TabIndex = 155;
             this.label1.Text = "學生";
             // 
@@ -163,7 +164,7 @@ namespace prjLinqHomework
             this.label2.Font = new System.Drawing.Font("標楷體", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.Location = new System.Drawing.Point(250, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 37);
+            this.label2.Size = new System.Drawing.Size(49, 19);
             this.label2.TabIndex = 156;
             this.label2.Text = "科目";
             // 
@@ -173,17 +174,17 @@ namespace prjLinqHomework
             this.label3.Font = new System.Drawing.Font("標楷體", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.Location = new System.Drawing.Point(368, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 37);
+            this.label3.Size = new System.Drawing.Size(89, 19);
             this.label3.TabIndex = 157;
             this.label3.Text = "分群方法";
             // 
             // listBoxSubject
             // 
             this.listBoxSubject.FormattingEnabled = true;
-            this.listBoxSubject.ItemHeight = 37;
+            this.listBoxSubject.ItemHeight = 18;
             this.listBoxSubject.Location = new System.Drawing.Point(193, 148);
             this.listBoxSubject.Name = "listBoxSubject";
-            this.listBoxSubject.Size = new System.Drawing.Size(150, 189);
+            this.listBoxSubject.Size = new System.Drawing.Size(150, 184);
             this.listBoxSubject.TabIndex = 158;
             this.listBoxSubject.DoubleClick += new System.EventHandler(this.listBoxSubject_DoubleClick);
             // 
@@ -202,7 +203,7 @@ namespace prjLinqHomework
             this.comboBoxStudent.FormattingEnabled = true;
             this.comboBoxStudent.Location = new System.Drawing.Point(16, 92);
             this.comboBoxStudent.Name = "comboBoxStudent";
-            this.comboBoxStudent.Size = new System.Drawing.Size(150, 45);
+            this.comboBoxStudent.Size = new System.Drawing.Size(150, 26);
             this.comboBoxStudent.TabIndex = 161;
             this.comboBoxStudent.SelectionChangeCommitted += new System.EventHandler(this.comboBoxStudent_SelectionChangeCommitted);
             // 
@@ -211,7 +212,7 @@ namespace prjLinqHomework
             this.comboBoxSubject.FormattingEnabled = true;
             this.comboBoxSubject.Location = new System.Drawing.Point(193, 92);
             this.comboBoxSubject.Name = "comboBoxSubject";
-            this.comboBoxSubject.Size = new System.Drawing.Size(150, 45);
+            this.comboBoxSubject.Size = new System.Drawing.Size(150, 26);
             this.comboBoxSubject.TabIndex = 162;
             this.comboBoxSubject.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSubject_SelectionChangeCommitted);
             // 
@@ -227,7 +228,7 @@ namespace prjLinqHomework
             "依性別分群"});
             this.comboBoxGroupBy.Location = new System.Drawing.Point(375, 92);
             this.comboBoxGroupBy.Name = "comboBoxGroupBy";
-            this.comboBoxGroupBy.Size = new System.Drawing.Size(150, 45);
+            this.comboBoxGroupBy.Size = new System.Drawing.Size(150, 26);
             this.comboBoxGroupBy.TabIndex = 163;
             // 
             // contextMenuStripStudent
@@ -239,15 +240,16 @@ namespace prjLinqHomework
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 340);
+            this.label4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(13, 335);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(434, 31);
+            this.label4.Size = new System.Drawing.Size(112, 16);
             this.label4.TabIndex = 164;
-            this.label4.Text = "Double click to remove selected item";
+            this.label4.Text = "*雙擊取消選取";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.listBoxStudent);
             this.groupBox1.Controls.Add(this.label4);
@@ -271,7 +273,7 @@ namespace prjLinqHomework
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(79, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(175, 32);
+            this.label5.Size = new System.Drawing.Size(88, 16);
             this.label5.TabIndex = 166;
             this.label5.Text = "請選擇科目";
             // 
@@ -280,13 +282,23 @@ namespace prjLinqHomework
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(79, 326);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(175, 32);
+            this.label6.Size = new System.Drawing.Size(88, 16);
             this.label6.TabIndex = 167;
             this.label6.Text = "請選擇學生";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(13, 357);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(176, 16);
+            this.label7.TabIndex = 165;
+            this.label7.Text = "*學生及科目可重複選取";
+            // 
             // Frm作業_3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1556, 896);
             this.Controls.Add(this.label6);
@@ -334,5 +346,6 @@ namespace prjLinqHomework
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

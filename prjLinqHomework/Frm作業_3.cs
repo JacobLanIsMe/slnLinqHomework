@@ -217,6 +217,11 @@ namespace prjLinqHomework
             }
             else
             {
+                if (listBoxSubject.Items.Count == 0)
+                {
+                    MessageBox.Show("請選擇一個科目!");
+                    return;
+                }
                 comboBoxStudent.Items.Clear();
                 foreach (string s in listBoxStudent.Items)
                 {
