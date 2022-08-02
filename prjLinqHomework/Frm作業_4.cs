@@ -350,7 +350,7 @@ namespace prjLinqHomework
             chart1.ChartAreas["FirstChart"].Position.Height = 70;
             chart1.ChartAreas["FirstChart"].Position.Width = 50;
             chart1.ChartAreas["FirstChart"].Position.X = 0;
-            chart1.ChartAreas["FirstChart"].Position.Y = 30;
+            chart1.ChartAreas["FirstChart"].Position.Y = 20;
             chart1.ChartAreas["SecondChart"].Position.Auto = false;
             chart1.ChartAreas["SecondChart"].Position.Height = 70;
             chart1.ChartAreas["SecondChart"].Position.Width = 50;
